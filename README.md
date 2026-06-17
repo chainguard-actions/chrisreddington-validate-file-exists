@@ -1,1 +1,15 @@
-# chrisreddington-validate-file-exists
+# chrisreddington/validate-file-exists
+
+This GitHub Action validates the existence of a list of files when provided a comma separated list.
+
+Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at [https://github.com/chrisreddington/validate-file-exists](https://github.com/chrisreddington/validate-file-exists).
+
+## Versions
+
+| Version | Tag | Upstream commit |
+|---------|-----|-----------------|
+| v0.0.8 | [`v0.0.8`](https://github.com/chainguard-actions/chrisreddington-validate-file-exists/tree/v0.0.8) | [`098064c`](https://github.com/chrisreddington/validate-file-exists/commit/098064cf540a8f2569b100669b7dcd04af7ce5f3) |
+
+## Privacy
+
+This Action contacts Chainguard's licensing server to verify authorization. Connection metadata (IP address, GitHub repository identifier, timestamp, and any metadata encoded in the auth token) is transmitted to Chainguard, Inc. even if authorization is denied in accordance with our [Privacy Notice](https://www.chainguard.dev/legal/privacy-notice)
