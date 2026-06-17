@@ -1,0 +1,25 @@
+name: Test files missing scenario
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        with:
+          required-files: '/tmp/this-file-does-not-exist-abc123.txt'
+        continue-on-error: true
+      - name: Assert action failed or exists is false
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+          EXISTS: ${{ steps.action.outputs.exists }}
+        run: |
+          echo "outcome: $OUTCOME"
+          echo "exists: $EXISTS"
+          if [ "$OUTCOME" = "success" ] && [ "$EXISTS" = "true" ]; then
+            echo "FAIL: expected action to fail or exists to be false when file is missing"
+            exit 1
+          fi
+          echo "PASS: action correctly handled missing file"
