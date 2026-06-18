@@ -12,6 +12,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 | v0.0.6 | [`v0.0.6`](https://github.com/chainguard-actions/chrisreddington-validate-file-exists/tree/v0.0.6) | [`47edc30`](https://github.com/chrisreddington/validate-file-exists/commit/47edc3016d3300f5066c5f20733e5ed7166b420c) |
 | v0.0.7 | [`v0.0.7`](https://github.com/chainguard-actions/chrisreddington-validate-file-exists/tree/v0.0.7) | [`5761b8d`](https://github.com/chrisreddington/validate-file-exists/commit/5761b8dd0f6b24fbf15388206c249b61f0919e54) |
 | v0.0.8 | [`v0.0.8`](https://github.com/chainguard-actions/chrisreddington-validate-file-exists/tree/v0.0.8) | [`098064c`](https://github.com/chrisreddington/validate-file-exists/commit/098064cf540a8f2569b100669b7dcd04af7ce5f3) |
+| v0.0.9 | [`v0.0.9`](https://github.com/chainguard-actions/chrisreddington-validate-file-exists/tree/v0.0.9) | [`253fa52`](https://github.com/chrisreddington/validate-file-exists/commit/253fa52d8f438a02a787007fe07d06a793ddc4ae) |
 
 ## Privacy
 
