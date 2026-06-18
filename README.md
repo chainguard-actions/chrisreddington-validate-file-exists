@@ -8,6 +8,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 | Version | Tag | Upstream commit |
 |---------|-----|-----------------|
+| v0.0.7 | [`v0.0.7`](https://github.com/chainguard-actions/chrisreddington-validate-file-exists/tree/v0.0.7) | [`5761b8d`](https://github.com/chrisreddington/validate-file-exists/commit/5761b8dd0f6b24fbf15388206c249b61f0919e54) |
 | v0.0.8 | [`v0.0.8`](https://github.com/chainguard-actions/chrisreddington-validate-file-exists/tree/v0.0.8) | [`098064c`](https://github.com/chrisreddington/validate-file-exists/commit/098064cf540a8f2569b100669b7dcd04af7ce5f3) |
 
 ## Privacy
