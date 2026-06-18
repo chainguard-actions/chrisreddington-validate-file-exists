@@ -1,0 +1,26 @@
+name: Test files exist
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Create test files
+        run: |
+          touch "$GITHUB_WORKSPACE/test-file-a.txt"
+          touch "$GITHUB_WORKSPACE/test-file-b.txt"
+      - id: action
+        uses: .
+        with:
+          required-files: "test-file-a.txt,test-file-b.txt"
+      - name: Assert exists output is true
+        env:
+          ACTUAL: ${{ steps.action.outputs.exists }}
+        run: |
+          echo "actual: $ACTUAL"
+          if [ "$ACTUAL" != "true" ]; then
+            echo "FAIL: expected 'true' but got '$ACTUAL'"
+            exit 1
+          fi
+          echo "PASS"
