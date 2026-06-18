@@ -1,0 +1,66 @@
+{
+  "name": "validate-file-exists-action",
+  "description": "GitHub Action that validates whether specified files exist in your repository",
+  "version": "0.0.8",
+  "author": "chrisreddington",
+  "private": true,
+  "homepage": "https://github.com/chrisreddington/validate-file-exists",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisreddington/validate-file-exists.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chrisreddington/validate-file-exists/issues"
+  },
+  "keywords": [
+    "github-actions",
+    "file-validation",
+    "ci-cd",
+    "file-exists",
+    "workflow"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "bundle": "npm run format:write && npm run package",
+    "ci-test": "vitest run",
+    "coverage": "npx make-coverage-badge --output-path ./badges/coverage.svg",
+    "format:write": "npx prettier --write .",
+    "format:check": "npx prettier --check .",
+    "lint": "npx eslint . -c ./.github/linters/eslint.config.mjs",
+    "local-action": "npx local-action . src/main.ts .env",
+    "package": "npx ncc build src/index.ts -o dist --source-map --license licenses.txt",
+    "package:watch": "npm run package -- --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "all": "npm run format:write && npm run lint && npm run test -- --coverage && npm run coverage && npm run package"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.11.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.39.1",
+    "@github/local-action": "^6.0.2",
+    "@types/node": "^24.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.49.0",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vercel/ncc": "^0.38.4",
+    "@vitest/coverage-v8": "^4.0.15",
+    "eslint": "^9.39.1",
+    "eslint-plugin-jsonc": "^2.21.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-vitest": "^0.5.4",
+    "globals": "^16.5.0",
+    "make-coverage-badge": "^1.2.0",
+    "prettier": "^3.7.4",
+    "prettier-eslint": "^16.4.2",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.10"
+  }
+}
