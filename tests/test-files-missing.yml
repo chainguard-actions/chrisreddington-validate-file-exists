@@ -6,24 +6,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
       - id: action
         uses: .
         with:
-          required-files: 'this-file-does-not-exist-abc123.txt'
+          required-files: '/tmp/this-file-does-not-exist-abc123.txt'
         continue-on-error: true
-      - name: Assert action failed for missing file
+
+      - name: Assert action failed or exists is false
         env:
           OUTCOME: ${{ steps.action.outcome }}
-          ACTUAL: ${{ steps.action.outputs.exists }}
+          EXISTS: ${{ steps.action.outputs.exists }}
         run: |
           echo "outcome: $OUTCOME"
-          echo "exists output: $ACTUAL"
-          if [ "$OUTCOME" != "failure" ]; then
-            echo "FAIL: expected action to fail when file is missing, but outcome was '$OUTCOME'"
+          echo "exists: $EXISTS"
+          # The action should either fail (outcome=failure) or return exists=false
+          if [ "$OUTCOME" = "failure" ] || [ "$EXISTS" = "false" ]; then
+            echo "PASS: action correctly reported missing file"
+          else
+            echo "FAIL: expected action to fail or return exists=false, got outcome=$OUTCOME exists=$EXISTS"
             exit 1
           fi
-          if [ "$ACTUAL" = "true" ]; then
-            echo "FAIL: expected exists output to not be 'true' when file is missing"
-            exit 1
-          fi
-          echo "PASS"

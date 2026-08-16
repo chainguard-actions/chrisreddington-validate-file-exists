@@ -1,4 +1,4 @@
-name: Test files exist
+name: Test repo files exist
 on:
   workflow_dispatch:
 jobs:
@@ -7,17 +7,12 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Create test files
-        run: |
-          touch /tmp/test-file-a.txt
-          touch /tmp/test-file-b.txt
-
       - id: action
         uses: .
         with:
-          required-files: '/tmp/test-file-a.txt,/tmp/test-file-b.txt'
+          required-files: 'action.yml,dist/index.js'
 
-      - name: Assert exists output is true
+      - name: Assert exists output is true for repo files
         env:
           ACTUAL: ${{ steps.action.outputs.exists }}
         run: |

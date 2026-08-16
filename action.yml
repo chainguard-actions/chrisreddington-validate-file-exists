@@ -1,20 +1,26 @@
 name: 'Validate file exists'
-description: 'This GitHub Action validates the existence of a list of files when provided a comma separated list.'
+description:
+  'This GitHub Action validates the existence of a list of files when provided a
+  comma separated list.'
 author: 'chrisreddington'
+
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
   icon: 'file'
   color: 'yellow'
+
 # Define your inputs here.
 inputs:
   required-files:
     description: 'Comma-separated list of files to validate'
     required: true
+
 # Define your outputs here.
 outputs:
   exists:
     description: 'Returns true if all files exist'
+
 runs:
+  pre: chainguard-phonehome.js
   using: node20
   main: dist/index.js
-  pre: chainguard-phonehome.js
