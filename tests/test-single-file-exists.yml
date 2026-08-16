@@ -1,4 +1,4 @@
-name: Test files exist
+name: Test single file exists
 on:
   workflow_dispatch:
 jobs:
@@ -6,14 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Create test files
+      - name: Verify action.yml exists in workspace
         run: |
-          touch /tmp/test-file-a.txt
-          touch /tmp/test-file-b.txt
+          ls -la "$GITHUB_WORKSPACE/action.yml"
       - id: action
         uses: .
         with:
-          required-files: '/tmp/test-file-a.txt,/tmp/test-file-b.txt'
+          required-files: 'action.yml'
       - name: Assert exists output is true
         env:
           ACTUAL: ${{ steps.action.outputs.exists }}
