@@ -1,0 +1,30 @@
+name: Test multiple files - all exist
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Create multiple test files
+        run: |
+          echo "file one" > "$GITHUB_WORKSPACE/file-one.txt"
+          echo "file two" > "$GITHUB_WORKSPACE/file-two.txt"
+          echo "file three" > "$GITHUB_WORKSPACE/file-three.txt"
+
+      - id: action
+        uses: .
+        with:
+          required-files: "file-one.txt,file-two.txt,file-three.txt"
+
+      - name: Assert exists output is true for all files
+        env:
+          ACTUAL: ${{ steps.action.outputs.exists }}
+        run: |
+          echo "actual: $ACTUAL"
+          if [ "$ACTUAL" != "true" ]; then
+            echo "FAIL: expected 'true' but got '$ACTUAL'"
+            exit 1
+          fi
+          echo "PASS"
